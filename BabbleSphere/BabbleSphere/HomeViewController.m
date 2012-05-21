@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "SettingsViewController.h"
 
 @implementation HomeViewController
 
@@ -42,11 +43,19 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+#pragma mark - Button click handlers
 
 - (IBAction)onButtonLogOutClicked:(id)sender {
 }
@@ -58,5 +67,9 @@
 }
 
 - (IBAction)onButtonSettingsClicked:(id)sender {
+    SettingsViewController *vcSettings = [[SettingsViewController alloc] init];
+    [self.navigationController pushViewController:vcSettings animated:YES];
+    [vcSettings release];
 }
+
 @end
